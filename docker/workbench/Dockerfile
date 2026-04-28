@@ -5,8 +5,17 @@ ARG HOST_GROUP_ID
 ARG WORKBENCH_USER
 
 # 取り込みフラグ
+ARG INSTALL_FLG_GIT
 ARG INSTALL_FLG_NODE
 ARG INSTALL_FLG_UV
+
+# Git
+RUN if [ "${INSTALL_FLG_GIT}" = "true" ]; then \
+      apt-get update; \
+      apt-get install -y --no-install-recommends git; \
+      git --version; \
+      rm -rf /var/lib/apt/lists/*; \
+    fi
 
 # Node.js
 ARG NODE_MAJOR

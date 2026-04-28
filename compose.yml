@@ -8,6 +8,7 @@ services:
         HOST_GROUP_ID: ${HOST_GROUP_ID}
         WORKBENCH_USER: ${WORKBENCH_USER}
         # 取り込みフラグ
+        INSTALL_FLG_GIT: ${INSTALL_FLG_GIT}
         INSTALL_FLG_NODE: ${INSTALL_FLG_NODE}
         INSTALL_FLG_UV: ${INSTALL_FLG_UV}
         # Node.js
