@@ -9,10 +9,12 @@ services:
         WORKBENCH_USER: ${WORKBENCH_USER}
         # 取り込みフラグ
         INSTALL_FLG_NODE: ${INSTALL_FLG_NODE}
+        INSTALL_FLG_UV: ${INSTALL_FLG_UV}
         # Node.js
         NODE_MAJOR: ${NODE_MAJOR}
     volumes:
       - ${TARGET_PROJECT_PATH}:/workspace
       - /workspace/node_modules
+      - /home/${WORKBENCH_USER}/.cache/uv
     tty: true
     stdin_open: true
