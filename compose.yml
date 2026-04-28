@@ -7,7 +7,12 @@ services:
         HOST_USER_ID: ${HOST_USER_ID}
         HOST_GROUP_ID: ${HOST_GROUP_ID}
         WORKBENCH_USER: ${WORKBENCH_USER}
+        # 取り込みフラグ
+        INSTALL_FLG_NODE: ${INSTALL_FLG_NODE}
+        # Node.js
+        NODE_MAJOR: ${NODE_MAJOR}
     volumes:
       - ${TARGET_PROJECT_PATH}:/workspace
+      - /workspace/node_modules
     tty: true
     stdin_open: true
