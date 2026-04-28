@@ -6,6 +6,7 @@ ARG WORKBENCH_USER
 
 # 取り込みフラグ
 ARG INSTALL_FLG_NODE
+ARG INSTALL_FLG_UV
 
 # Node.js
 ARG NODE_MAJOR
@@ -25,6 +26,19 @@ RUN if [ "${INSTALL_FLG_NODE}" = "true" ]; then \
       corepack enable || true; \
       node --version; \
       npm --version; \
+      rm -rf /var/lib/apt/lists/*; \
+    fi
+
+# uv
+RUN if [ "${INSTALL_FLG_UV}" = "true" ]; then \
+      apt-get update && \
+      apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl && \
+      curl -LsSf https://astral.sh/uv/install.sh \
+        | env UV_INSTALL_DIR=/usr/local/bin sh && \
+      uv --version && \
+      uvx --version && \
       rm -rf /var/lib/apt/lists/*; \
     fi
 
